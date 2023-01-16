@@ -1,0 +1,8 @@
+POST http://localhost:3003/api/notes
+Content-Type: application/json
+
+{
+  "content": "this database works",
+  "important": true,
+  "date": "2022-01-01"
+}
