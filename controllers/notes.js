@@ -1,6 +1,6 @@
 const router = require('express').Router()
 
-const { Note } = require('../models')
+const { Note, User } = require('../models')
 
 const noteFinder = async (req, res, next) => {
   req.note = await Note.findByPk(req.params.id)
@@ -25,7 +25,8 @@ router.get('/:id', noteFinder, async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const note = await Note.create(req.body)
+    const user = await User.findOne() // roughly implemented: grab first user you find
+    const note = await Note.create({ ...req.body, userId: user.id })
     return res.json(note)
   } catch (error) {
     return res.status(400).json({ error })
