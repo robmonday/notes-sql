@@ -1,0 +1,7 @@
+PUT http://localhost:3003/api/users/jenniem
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWQiOjMsImlhdCI6MTY3NDA2OTcxMn0.i6cK3AjnBKnfFZnfIYeR5cvXIY7mxoREqzmaQOJ0EIE
+
+{
+  "disabled": false
+}

@@ -1,6 +1,6 @@
 POST http://localhost:3003/api/notes
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvYm1vbmRheSIsImlkIjo0LCJpYXQiOjE2NzQwNDg2Njd9.CwWrI7mb576R9BklcfOdd_3CmUTYKSNOaymdeO5WATc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvYm1vbmRheSIsImlkIjoxLCJpYXQiOjE2NzQwNjYyNjh9.gh4riiQsLYmhPkEC_Y_QKo5RQxqI75r0bxey4EBT1MU
 
 {
   "content": "yet another note created by logged in user",
