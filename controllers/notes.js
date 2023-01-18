@@ -3,9 +3,16 @@ const router = require('express').Router()
 
 const { Note, User } = require('../models')
 const { SECRET } = require('../util/config')
+const { sequelize } = require('../util/db')
+
+const { Op } = require('sequelize')
 
 const noteFinder = async (req, res, next) => {
-  req.note = await Note.findByPk(req.params.id)
+  try {
+    req.note = await Note.findByPk(req.params.id)
+  } catch (err) {
+    next(err)
+  }
   next()
 }
 
@@ -25,12 +32,25 @@ const tokenExtractor = (req, res, next) => {
 }
 
 router.get('/', async (req, res) => {
+  const where = {}
+
+  if (req.query.important) {
+    where.important = req.query.important === 'true'
+  }
+
+  if (req.query.search) {
+    where.content = {
+      [Op.substring]: req.query.search,
+    }
+  }
+
   const notes = await Note.findAll({
     attributes: { exclude: ['userId'] },
     include: {
       model: User,
       attributes: ['name'],
     },
+    where,
   })
   console.log(notes.map((note) => JSON.stringify(note, null, 2)))
   res.json(notes)
